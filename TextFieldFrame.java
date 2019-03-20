@@ -8,11 +8,21 @@ import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JOptionPane;
 import javax.swing.JLabel;
+import java.util.Random;
+
+
 
 public class TextFieldFrame extends JFrame 
 {
    private final JTextField textField1; // text field with set size
    private final JLabel label1; // JLabel with just text
+
+   // generate random number
+   Random rand = new Random();
+   // Obtain a number between [0 - 49].
+   int randomNumber = rand.nextInt(1001) + 1;
+   int newDistance = 999;
+   int previousNumber = 999;
 
    // TextFieldFrame constructor adds JTextFields to JFrame
    public TextFieldFrame()
@@ -48,6 +58,7 @@ public class TextFieldFrame extends JFrame
             string = String.format("textField1: %s",
                event.getActionCommand());
 
+         
          // answer matches random number 
          if (event.getActionCommand() == randomNumber)
          {
@@ -57,6 +68,8 @@ public class TextFieldFrame extends JFrame
            // put warmer or colder logic here 
          }
         
+         // set previous answer
+         int previousNumber = event.getActionCommand();
 
       } 
    } // end private inner class TextFieldHandler
