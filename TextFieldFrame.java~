@@ -1,5 +1,7 @@
 // Fig. 12.9: TextFieldFrame.java
 // JTextFields and JPasswordFields.
+import java.lang.Math;
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -22,7 +24,7 @@ public class TextFieldFrame extends JFrame
    // Obtain a number between [0 - 49].
    int randomNumber = rand.nextInt(1001) + 1;
    int newDistance = 999;
-   int previousNumber = 999;
+   int previousDistance = 999;
 
    // TextFieldFrame constructor adds JTextFields to JFrame
    public TextFieldFrame()
@@ -60,17 +62,29 @@ public class TextFieldFrame extends JFrame
 
          
          // answer matches random number 
-         if (event.getActionCommand() == randomNumber)
+         if (Integer.parseInt(event.getActionCommand()) == randomNumber)
          {
            // display yay
            JOptionPane.showMessageDialog(null, "Correct!"); 
          } else {
-           // put warmer or colder logic here 
+           int answer = Integer.parseInt(textField1.getText());
+
+           newDistance = Math.abs(answer - randomNumber);
+
+           if (newDistance < previousDistance)
+           {
+              getContentPane().setBackground(Color.RED);
+              JOptionPane.showMessageDialog(null, randomNumber);
+           } 
+           else if (newDistance > previousDistance)
+           {
+             JOptionPane.showMessageDialog(null, randomNumber);
+             getContentPane().setBackground(Color.BLUE);
+           }   
+           int previousDistance = newDistance;
          }
         
-         // set previous answer
-         int previousNumber = event.getActionCommand();
-
-      } 
+        
+            } 
    } // end private inner class TextFieldHandler
 } // end class TextFieldFrame

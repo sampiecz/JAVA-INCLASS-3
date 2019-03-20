@@ -68,20 +68,26 @@ public class TextFieldFrame extends JFrame
            JOptionPane.showMessageDialog(null, "Correct!"); 
          } else {
            int answer = Integer.parseInt(textField1.getText());
-
+           
            newDistance = Math.abs(answer - randomNumber);
 
            if (newDistance < previousDistance)
            {
               getContentPane().setBackground(Color.RED);
-              JOptionPane.showMessageDialog(null, randomNumber);
            } 
            else if (newDistance > previousDistance)
            {
-             JOptionPane.showMessageDialog(null, randomNumber);
+             
              getContentPane().setBackground(Color.BLUE);
+             JOptionPane.showMessageDialog(null, randomNumber);
            }   
-           int previousDistance = newDistance;
+           
+           if (answer > randomNumber)
+             JOptionPane.showMessageDialog(null, "Too High!");
+           else if (answer < randomNumber)
+             JOptionPane.showMessageDialog(null, "Too Low!");
+                                             
+           previousDistance = newDistance;
          }
         
         
