@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JOptionPane;
+import javax.swing.JLabel;
 
 public class TextFieldFrame extends JFrame 
 {
@@ -21,6 +22,7 @@ public class TextFieldFrame extends JFrame
       // construct textfield with 10 columns
       textField1 = new JTextField(10); 
       add(textField1); // add textField1 to JFrame
+
 
       // register event handlers
       TextFieldHandler handler = new TextFieldHandler();
@@ -41,7 +43,8 @@ public class TextFieldFrame extends JFrame
                event.getActionCommand());
 
          // display JTextField content
-         JOptionPane.showMessageDialog(null, string); 
+         JOptionPane.showMessageDialog(null, event.getActionCommand()); 
+
       } 
    } // end private inner class TextFieldHandler
 } // end class TextFieldFrame
