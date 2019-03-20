@@ -12,12 +12,18 @@ import javax.swing.JLabel;
 public class TextFieldFrame extends JFrame 
 {
    private final JTextField textField1; // text field with set size
+   private final JLabel label1; // JLabel with just text
 
    // TextFieldFrame constructor adds JTextFields to JFrame
    public TextFieldFrame()
    {
       super("Testing JTextField and JPasswordField");
       setLayout(new FlowLayout());
+
+
+      // get that label in here
+      label1 = new JLabel("I have a number between 1 and 1000.  Can you guess my number?\nPlease enter your first guess:");
+      add(label1);
 
       // construct textfield with 10 columns
       textField1 = new JTextField(10); 
@@ -42,8 +48,15 @@ public class TextFieldFrame extends JFrame
             string = String.format("textField1: %s",
                event.getActionCommand());
 
-         // display JTextField content
-         JOptionPane.showMessageDialog(null, event.getActionCommand()); 
+         // answer matches random number 
+         if (event.getActionCommand() == randomNumber)
+         {
+           // display yay
+           JOptionPane.showMessageDialog(null, "Correct!"); 
+         } else {
+           // put warmer or colder logic here 
+         }
+        
 
       } 
    } // end private inner class TextFieldHandler
